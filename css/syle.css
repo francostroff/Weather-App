@@ -1,14 +1,25 @@
-div.container-fluid {
-    border: 10px;
-    background-color: rgb(30, 198, 198);
+header{ background:linear-gradient(45deg, rgb(41, 41, 41), rgb(35, 35, 250));
 }
-
-
-
 #search-button {
-    background-color: rgb(37, 141, 141);
+    background-color:#3A3335
+
 }
 
+#today {
+    background: linear-gradient(45deg, rgb#3a6186), rgb(#89253e);
+    margin:50px ;
+}
 
+.col-lg-9 {
+    background: linear-gradient(45deg, rgb(144, 144, 144), blue);
+}
 
+#form-heading {
+    background-color: #FDF0D5
+}
+
+#user-input {
+    background-color: #3A3335;
+    color: #ffffff;
+}
 

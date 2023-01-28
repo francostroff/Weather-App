@@ -1,33 +1,45 @@
-$("#search-button").on("click", function(event) {
+var APIKey = "1c1b77b2320a7c40bf8fdaca828e562a";
+// Here we construct our URL
+// var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+ var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=" + APIKey;
+console.log(queryURL);
 
-  // Preventing the submit button from trying to submit the form
-  // We're optionally using a form so the user may hit Enter to search instead of clicking the button
+// Write code between the dashes below to hit the queryURL with $ajax, then take the response data
+$.ajax({
+  url: queryURL,
+  method: "GET"
+}).then(function(response) {
+  console.log(response);
+    let K = response.main.temp;
+    let C = K - 273.15;
+    console.log(C+"°C");
+    var results = response.data;
+    
+    ///////////////////////////////////////////
+$("button").on("click", function(event) {
   event.preventDefault();
-
-  // Here we grab the text from the input box
+// Here we grab the text from the input box
   var city = $("#search-input").val();
-  console.log(city);
-  var APIKey = "1c1b77b2320a7c40bf8fdaca828e562a";
-  // Here we construct our URL
-  // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
-   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=" + APIKey;
-  console.log(queryURL);
+  $("#form-input").append();
+ 
+  for (var i = 0; i < city.length; i++) {
+   var cityButton = $("<button>");
+   cityButton.addClass("#add");
+   cityButton.attr("today", city);
+   cityButton.text(city);
+   $("aside").append(cityButton);
+   console.log(city);
+   }
+// ////////////////////////////////////////////////
 
-  // Write code between the dashes below to hit the queryURL with $ajax, then take the response data
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-   // Create CODE HERE to Log the queryURL
-    console.log(queryURL);
-    // Create CODE HERE to log the resulting object
-    console.log(response);
-  // and display it in the div with an id of movie-view$.ajax({})
-  $(".input-group-append").show();
-  $(".input-group-append").html("<h1>" + response.main.temp + "</h1>");
-  $(".input-group-append").append("<h2>" + response.main.humidity + "</h2>");
-  $(".input-group-append").append("<h3>" + response.name + "</h3>");
-   
+  $("#today").show();
+  $("#forecast").show();
+  $("#today").html("<h1>" + response.name + "<h1>");
+  $("#today").append("<h2>Temperature:" + response.main.temp + "<h2>");
+  $("#today").append("<h2>Wind Speed:" + response.wind.speed + "km/h<h2>");
+  $("#today").append("<h3>Humidity:" + response.main.humidity + "%" + "</h3>");
+  $("#forecast").html("<h2>" + "5 Day Forecast" + "</h2>");
+ 
 });
 });
   
