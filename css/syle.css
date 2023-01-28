@@ -1,27 +1,55 @@
-header{ background:linear-gradient(45deg, rgb(41, 41, 41), rgb(35, 35, 250));
+header { background:linear-gradient(45deg, rgb(41, 41, 41), rgb(35, 35, 250));
+    
+}
+
+.container-fluid {
+    padding:10px;
+    margin:10px;
 }
 #search-button {
-    background-color:#3A3335
-
-}
+    background-color:#3A3335;
+    border-radius: 8px;
+    }
 
 #today {
     color: #ffffff;
+    
 }
 
 .col-lg-9 {
     background:linear-gradient(45deg, rgb(41, 41, 41), rgb(35, 35, 250));
- 
+    
+}
+
+.col-lg-3 {
+    background:linear-gradient(45deg, rgb(35, 35, 250));
 }
 
 #form-heading {
     color: #ffffff;
-   
     background:linear-gradient(0deg, rgb(41, 41, 41), rgb(15, 15, 95));
+    
 }
-
+    
 #user-input {
     background-color: #3A3335;
     color: #ffffff;
+    }
+
+    .input-group {
+    margin: 8px;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background:linear-gradient(0deg, rgb(41, 41, 41), rgb(15, 15, 95));
+    
 }
 
+#forecast {
+    background-color: rgb(242, 242, 247);
+}
+
+.row-mt-3 {
+    color: black;
+}

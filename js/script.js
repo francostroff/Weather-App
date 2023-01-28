@@ -1,9 +1,10 @@
+//function handles events where one button is clicked
 $("button").on("click", function(event) {
   event.preventDefault();
-// Here we grab the text from the input box
+// grab the text from the input box
   var city = $("#search-input").val();
   $("#form-input").append();
- {
+  {
    var cityButton = $("<button>");
    cityButton.addClass("input-group");
    cityButton.attr("today", city);
@@ -11,15 +12,12 @@ $("button").on("click", function(event) {
    $("aside").append(cityButton);
    console.log(city);
    localStorage.setItem("city", city);
-   }
-
-var APIKey = "1c1b77b2320a7c40bf8fdaca828e562a";
-// Here we construct our URL
-// var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
- var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+}
+// build Url based on user input
+ var APIKey = "1c1b77b2320a7c40bf8fdaca828e562a";
+ var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=metric";
 console.log(queryURL);
-
-// Write code between the dashes below to hit the queryURL with $ajax, then take the response data
+// ajax call
 $.ajax({
   url: queryURL,
   method: "GET"
@@ -28,28 +26,26 @@ $.ajax({
     let K = response.main.temp;
     let C = K - 273.15;
     console.log(C+"°C");
-    var results = response.data;
-    
-    // localStorage.setItem
-    ///////////////////////////////////////////
-
-  ////////////////////////////////////////////////
-
+   
+ //////////////////////////////////////////
+var imageUrl = response.weather.icon;
+var weatherIcon= $("<img>");
+weatherIcon.attr("src", imageUrl);
+weatherIcon.attr("alt", "Icon");
+  $("#today").prepend(weatherIcon);
   $("#today").show();
   $("#forecast").show();
+  $("#row-mt-3").show();
   $("#today").html("<h1>" + response.name + "<h1>");
-  
-  $("#today").append("<h3>Temperature:" + response.main.temp + "<h3>");
-  $("#today").append("<h3>Wind Speed:" + response.wind.speed + "km/h<h3>");
-  $("#today").append("<h3>Humidity:" + response.main.humidity + "%" + "</h3>");
-  $("#forecast").html("<h2>" + "5 Day Forecast" + "</h2>");
-  $("#forecast").append("<h3>" + "Sunny" + "</h3>");
- 
+  $("#today").append("<h2>" + response.sys.country + "<h2>");
+  $("#today").append("<h3>Temperature  :  " + response.main.temp + " C˚<h3>");
+  $("#today").append("<h3>Wind Speed  :  " + response.wind.speed + "km/h<h3>");
+  $("#today").append("<h3>Humidity  :  " + response.main.humidity + "%" + "</h3>");
+  $("#forecast").html("<h2>" + "5 Day Forecast  :  " + "</h2>");
  
 });
 });
-  
-  ///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
   
   
   
