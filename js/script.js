@@ -13,6 +13,8 @@ $("button").on("click", function(event) {
    
    }
 
+   
+
 var APIKey = "1c1b77b2320a7c40bf8fdaca828e562a";
 // Here we construct our URL
 // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
@@ -41,6 +43,8 @@ $.ajax({
   $("#today").append("<h3>Wind Speed:" + response.wind.speed + "km/h<h3>");
   $("#today").append("<h3>Humidity:" + response.main.humidity + "%" + "</h3>");
   $("#forecast").html("<h2>" + "5 Day Forecast" + "</h2>");
+  $("#forecast").append("<h3>" + "Sunny" + "</h3>");
+ 
  
 });
 });
