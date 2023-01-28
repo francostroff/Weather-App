@@ -10,10 +10,8 @@ $("button").on("click", function(event) {
    cityButton.text(city);
    $("aside").append(cityButton);
    console.log(city);
-   
+   localStorage.setItem("city", city);
    }
-
-   
 
 var APIKey = "1c1b77b2320a7c40bf8fdaca828e562a";
 // Here we construct our URL
@@ -32,6 +30,7 @@ $.ajax({
     console.log(C+"°C");
     var results = response.data;
     
+    // localStorage.setItem
     ///////////////////////////////////////////
 
   ////////////////////////////////////////////////
@@ -39,6 +38,7 @@ $.ajax({
   $("#today").show();
   $("#forecast").show();
   $("#today").html("<h1>" + response.name + "<h1>");
+  
   $("#today").append("<h3>Temperature:" + response.main.temp + "<h3>");
   $("#today").append("<h3>Wind Speed:" + response.wind.speed + "km/h<h3>");
   $("#today").append("<h3>Humidity:" + response.main.humidity + "%" + "</h3>");
