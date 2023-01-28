@@ -5,17 +5,12 @@ header{ background:linear-gradient(45deg, rgb(41, 41, 41), rgb(35, 35, 250));
 
 }
 
-#today {
-    background: linear-gradient(45deg, rgb#3a6186), rgb(#89253e);
-    margin:50px ;
-}
-
 .col-lg-9 {
     background: linear-gradient(45deg, rgb(144, 144, 144), blue);
 }
 
 #form-heading {
-    background-color: #FDF0D5
+    background-color: #c99122
 }
 
 #user-input {

@@ -1,7 +1,22 @@
+$("button").on("click", function(event) {
+  event.preventDefault();
+// Here we grab the text from the input box
+  var city = $("#search-input").val();
+  $("#form-input").append();
+ {
+   var cityButton = $("<button>");
+   cityButton.addClass("input-group");
+   cityButton.attr("today", city);
+   cityButton.text(city);
+   $("aside").append(cityButton);
+   console.log(city);
+   
+   }
+
 var APIKey = "1c1b77b2320a7c40bf8fdaca828e562a";
 // Here we construct our URL
 // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
- var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=" + APIKey;
+ var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 console.log(queryURL);
 
 // Write code between the dashes below to hit the queryURL with $ajax, then take the response data
@@ -16,38 +31,21 @@ $.ajax({
     var results = response.data;
     
     ///////////////////////////////////////////
-$("button").on("click", function(event) {
-  event.preventDefault();
-// Here we grab the text from the input box
-  var city = $("#search-input").val();
-  $("#form-input").append();
- 
-  for (var i = 0; i < city.length; i++) {
-   var cityButton = $("<button>");
-   cityButton.addClass("#add");
-   cityButton.attr("today", city);
-   cityButton.text(city);
-   $("aside").append(cityButton);
-   console.log(city);
-   }
-// ////////////////////////////////////////////////
+
+  ////////////////////////////////////////////////
 
   $("#today").show();
   $("#forecast").show();
   $("#today").html("<h1>" + response.name + "<h1>");
-  $("#today").append("<h2>Temperature:" + response.main.temp + "<h2>");
-  $("#today").append("<h2>Wind Speed:" + response.wind.speed + "km/h<h2>");
+  $("#today").append("<h3>Temperature:" + response.main.temp + "<h3>");
+  $("#today").append("<h3>Wind Speed:" + response.wind.speed + "km/h<h3>");
   $("#today").append("<h3>Humidity:" + response.main.humidity + "%" + "</h3>");
   $("#forecast").html("<h2>" + "5 Day Forecast" + "</h2>");
  
 });
 });
   
-  
-  
-  
-  
-  // //////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////
   
   
   
