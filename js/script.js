@@ -23,9 +23,7 @@ $.ajax({
   method: "GET"
 }).then(function(response) {
   console.log(response);
-    let K = response.main.temp;
-    let C = K - 273.15;
-    console.log(C+"°C");
+   
    
  //////////////////////////////////////////
 var imageUrl = response.weather.icon;
@@ -42,8 +40,7 @@ weatherIcon.attr("alt", "Icon");
   $("#today").append("<h3>Wind Speed  :  " + response.wind.speed + "km/h<h3>");
   $("#today").append("<h3>Humidity  :  " + response.main.humidity + "%" + "</h3>");
   $("#forecast").html("<h2>" + "5 Day Forecast  :  " + "</h2>");
- 
-});
+ });
 });
 ///////////////////////////////////////////////////////////////////
   
