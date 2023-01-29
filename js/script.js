@@ -1,3 +1,6 @@
+
+
+
 //function handles events where one button is clicked
 $("button").on("click", function(event) {
   event.preventDefault();
@@ -12,6 +15,7 @@ $("button").on("click", function(event) {
    $("aside").append(cityButton);
    console.log(city);
    localStorage.setItem("city", city);
+
 }
 // build Url based on user input
  var APIKey = "1c1b77b2320a7c40bf8fdaca828e562a";
@@ -24,18 +28,23 @@ $.ajax({
 }).then(function(response) {
   console.log(response);
    
-   
- //////////////////////////////////////////
-var imageUrl = response.weather.icon;
-var weatherIcon= $("<img>");
-weatherIcon.attr("src", imageUrl);
-weatherIcon.attr("alt", "Icon");
+  //////////////////////////////////////////
+   $(document).on('click', '.saveBtn', function(){
+        alert("Saved! Check the console.");
+       
+    });
+  
+  var todayDate = moment().format("dddd, MMMM Do YYYY");
+  var imageUrl = ["http://openweathermap.org/img/wn/10d@2x.png"]
+  var weatherIcon= $("<img>");  
+  weatherIcon.attr("src", imageUrl);
+  weatherIcon.attr("alt", "Icon");
   $("#today").prepend(weatherIcon);
   $("#today").show();
   $("#forecast").show();
   $("#row-mt-3").show();
-  $("#today").html("<h1>" + response.name + "<h1>");
-  $("#today").append("<h2>" + response.sys.country + "<h2>");
+  $("#today").html("<h1>" + response.name + "  <h1>");
+  $("#today").append("<h2>"  + todayDate +"<h2>");
   $("#today").append("<h3>Temperature  :  " + response.main.temp + " C˚<h3>");
   $("#today").append("<h3>Wind Speed  :  " + response.wind.speed + "km/h<h3>");
   $("#today").append("<h3>Humidity  :  " + response.main.humidity + "%" + "</h3>");
