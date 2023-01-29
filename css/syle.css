@@ -26,9 +26,11 @@ header { background:linear-gradient(45deg, rgb(41, 41, 41), rgb(35, 35, 250));
 }
 
 #form-heading {
+    display: flex;
     color: #ffffff;
     background:linear-gradient(0deg, rgb(41, 41, 41), rgb(15, 15, 95));
-    
+    align-items: center;
+    justify-content: center;
 }
     
 #user-input {

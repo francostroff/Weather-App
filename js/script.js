@@ -9,6 +9,7 @@ $("button").on("click", function(event) {
   $("#form-input").append();
   {
    var cityButton = $("<button>");
+   var saveBtn = $("<button>");
    cityButton.addClass("input-group");
    cityButton.attr("today", city);
    cityButton.text(city);
@@ -29,10 +30,6 @@ $.ajax({
   console.log(response);
    
   //////////////////////////////////////////
-   $(document).on('click', '.saveBtn', function(){
-        alert("Saved! Check the console.");
-       
-    });
   
   var todayDate = moment().format("dddd, MMMM Do YYYY");
   var imageUrl = ["http://openweathermap.org/img/wn/10d@2x.png"]
@@ -52,6 +49,8 @@ $.ajax({
  });
 });
 ///////////////////////////////////////////////////////////////////
+
+
   
   
   
