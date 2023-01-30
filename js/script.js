@@ -33,7 +33,8 @@ $("button").on("click", function(event) {
   method: "GET"
   }).then(function(response) {
   console.log(response);
-
+  
+             
 //////////////////////////////////////////
 //display moment.js 
   var todayDate = moment().format("dddd, MMMM Do YYYY");
@@ -42,9 +43,10 @@ $("button").on("click", function(event) {
   $("#today").append("<h2>"  + todayDate +"<h2>");
   
   
-  $("#today").append("<h3>Temperature  :  " + response + "C<h3>");
-  $("#today").append("<h3>Wind Speed  :  " + response + "km/h<h3>");
-  $("#today").append("<h3>Humidity  :  " + response + "%" + "<h3>");
+  $("#today").append("<h3>Temperature  :  " + response.list[0].main.temp + "C<h3>");
+  console.log(response.list[0].main.temp);
+  $("#today").append("<h3>Wind Speed  :  " + response.list[0].wind.speed + "km/h<h3>");
+  $("#today").append("<h3>Humidity  :  " + response.list[0].main.humidity + "%" + "<h3>");
  
   var imageUrl = ["http://openweathermap.org/img/wn/10d@2x.png"]
   var weatherIcon= $("<img>");  
@@ -52,19 +54,41 @@ $("button").on("click", function(event) {
   weatherIcon.attr("alt", "Icon");
   $("#today").prepend(weatherIcon);
   $("#today").show(weatherIcon);
- 
-
   });
    
+  
+  
   $("#forecast").show();
   $("#forecast").html("<h2>" + "5 Day Forecast  :  " + "<h2>");
-  $("#forecast").append("<h3>" + response.weather + "<h3>");
-  console.log(response.weather);
-});
+  $("#forecast").append("<h3>" + response.list[4].main.temp + "<h3>");
+ });
 ///////////////////////////////////////////////////////////////////
+
+function foreCastCard (forecast) {
+
+  var col= $("<div>");
+  var card= $("<div>");
+  var cardBody= $("<div>");
+  var cardTitle= $("<h2>");
+  var temp = $("<p>");
+  var wind = $("<p>");
+  var humidity = $("<p>");
+
+  col.append(card);
+  card.append(cardBody);
+  cardBody.append(cardTitle,temp,wind,humidity);
+
+  col.attr("class", "col-md");
+  col.addClass("5-day-forecast")
+  card.attr("class", "card bg-primary h-100 text-white");
+  cardBody.attr("class", "card-body p-2");
+  cardTitle.attr("class", "card-title");
+
+
 
 
   
+}  
   
   
   
