@@ -15,10 +15,10 @@ $("button").on("click", function(event) {
    localStorage.setItem("city", city);
 }
 // make button city clickable
-$("cityButton").on("click", function(event) {
-  event.preventDefault();
+// $("cityButton").on("click", function(event) {
+//   event.preventDefault();
 
-});
+// });
 
 // build Url based on user input  
   var APIKey2 = "1c1b77b2320a7c40bf8fdaca828e562a";
@@ -42,9 +42,9 @@ $("cityButton").on("click", function(event) {
   $("#today").append("<h2>"  + todayDate +"<h2>");
   
   
-  $("#today").append("<h3>Temperature  :  " + response.main + "<h3>");
-  $("#today").append("<h3>Wind Speed  :  " + response.wind + "km/h<h3>");
-  $("#today").append("<h3>Humidity  :  " + response.humidity + "%" + "<h3>");
+  $("#today").append("<h3>Temperature  :  " + response + "C<h3>");
+  $("#today").append("<h3>Wind Speed  :  " + response + "km/h<h3>");
+  $("#today").append("<h3>Humidity  :  " + response + "%" + "<h3>");
  
   var imageUrl = ["http://openweathermap.org/img/wn/10d@2x.png"]
   var weatherIcon= $("<img>");  
@@ -53,12 +53,13 @@ $("cityButton").on("click", function(event) {
   $("#today").prepend(weatherIcon);
   $("#today").show(weatherIcon);
  
+
+  });
+   
   $("#forecast").show();
   $("#forecast").html("<h2>" + "5 Day Forecast  :  " + "<h2>");
   $("#forecast").append("<h3>" + response.weather + "<h3>");
   console.log(response.weather);
-
-  });
 });
 ///////////////////////////////////////////////////////////////////
 
