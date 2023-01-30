@@ -12,6 +12,7 @@ header { background:linear-gradient(45deg, rgb(41, 41, 41), rgb(35, 35, 250));
     }
 
 #today {
+    
     color: #ffffff;
     
 }
@@ -55,3 +56,5 @@ header { background:linear-gradient(45deg, rgb(41, 41, 41), rgb(35, 35, 250));
 .row-mt-3 {
     color: black;
 }
+
+
