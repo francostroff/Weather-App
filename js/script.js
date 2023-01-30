@@ -56,8 +56,6 @@ $("button").on("click", function(event) {
   $("#today").show(weatherIcon);
   });
    
-  
-  
   $("#forecast").show();
   $("#forecast").html("<h2>" + "5 Day Forecast  :  " + "<h2>");
   $("#forecast").append("<h3>" + response.list[4].main.temp + "<h3>");
@@ -83,71 +81,18 @@ function foreCastCard (forecast) {
   card.attr("class", "card bg-primary h-100 text-white");
   cardBody.attr("class", "card-body p-2");
   cardTitle.attr("class", "card-title");
+  temp.attr("class", "card-text");
+  wind.attr("class", "card-text");
+  humidity.attr("class", "card-text");
 
+  cardTitle.text(moment(forecast.dt_txt).format("D/M/YYYY"));
 
-
-
+  temp.text("Temperature: " + forecast.main.temp + "C");
+  wind.text("Wind Speed: " + forecast.wind.speed + "km/h");
+  humidity.text("Humidity: " + forecast.main.humidity + "%");
   
-}  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  // // Here we construct our URL
-  // var APIKey = "1c1b77b2320a7c40bf8fdaca828e562a";
-  // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=" + APIKey;
-
-  // $.ajax({
-  //   url: queryURL,
-  //   method: "GET"
-  // }).then(function(response) {
-  //   console.log(response);
-  //   console.log(queryURL);
-  //   let K = response.main.temp;
-  //   let C = K - 273.15;
-  //   console.log(C);
-  //   // Create CODE HERE to calculate the temperature (converted from Kelvin)
-  //   // Create CODE HERE to transfer content to HTML
-  //    document.querySelector('#today').innerText = 'Forecast: ' + response.weather[0].description;
-  //   // // Hint: To convert from Kelvin to Celsius: C = K - 273.15
-  //   // document.querySelector('.temp').innerText = 'Temperature: ${C}'
-  //   $("#today").show();
-  //   $("#today").html("<h1>" + (C)+"C"+ "</h1>");
-  //   $("#today").append("<h2>" + response.main.humidity+ "%" + "</h2>");
-  //   $("#today").append("<h2>" + response.name + "</h2>");
-  // });
-
-
-
-  // $.ajax({
-  //   url: queryURL,
-  //   method: "GET"
-  // }).done(function(data) {
-  //   // $('#forecast').append(JSON.stringify(data))
-  // });
-
-
-  // // need to create a click event for the buttons with the city name
-  // // when button is clicked, we need to get the weather data for that city
-  // // and display it on the page
-
-  // $(".search-button").on("click", function(event) {
-  //   event.preventDefault();
-  //   // var cityName = $(this).siblings(".city-name").val();
-  //   var userSearch = $(".city-name");
-   
-    
-  // });
-
+ }  
+ 
   // var cities = []
 
   // // // Function for displaying movie data
