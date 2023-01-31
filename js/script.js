@@ -25,10 +25,10 @@ $("button").on("click", function(event) {
 
 ///// api query builder 
   var APIKey2 = "1c1b77b2320a7c40bf8fdaca828e562a";
-  var queryURL2 = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey2 + "&units=metric";
+  var queryURL2 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey2 + "&units=metric";
   console.log(queryURL2);
   var APIKey = "1c1b77b2320a7c40bf8fdaca828e562a";
-  var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=metric";
+  var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=metric";
   console.log(queryURL);
 // ajax call
   $.ajax({
