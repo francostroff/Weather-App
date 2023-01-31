@@ -50,11 +50,21 @@ header { background:linear-gradient(45deg, rgb(41, 41, 41), rgb(35, 35, 250));
 }
 
 #forecast {
-    background-color: rgb(242, 242, 247);
+    color: #ffffff;
+    background:linear-gradient(-45deg, rgb(41, 41, 41), rgb(35, 35, 250));
+  
 }
 
 .row-mt-3 {
-    color: black;
+
 }
+
+div.card-body {
+    background:linear-gradient(0deg, rgb(41, 41, 41), rgb(35, 35, 250));
+    margin: 0px
+    
+    
+}
+
 
 

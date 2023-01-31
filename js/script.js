@@ -1,3 +1,11 @@
+
+///////// create variables to store data /////////
+var searchForm = $("#search-form");
+var searchInput = $("#search-input");
+var currentContainer = $("#today");
+var foreCastContainer= $("#forecast");
+var historyContainer = $("#history");
+
 //function handles events where one button is clicked
 $("button").on("click", function(event) {
   event.preventDefault();
@@ -14,13 +22,8 @@ $("button").on("click", function(event) {
    console.log(city);
    localStorage.setItem("city", city);
 }
-// make button city clickable
-// $("cityButton").on("click", function(event) {
-//   event.preventDefault();
 
-// });
-
-// build Url based on user input  
+///// api query builder 
   var APIKey2 = "1c1b77b2320a7c40bf8fdaca828e562a";
   var queryURL2 = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey2 + "&units=metric";
   console.log(queryURL2);
@@ -33,24 +36,25 @@ $("button").on("click", function(event) {
   method: "GET"
   }).then(function(response) {
   console.log(response);
+  renderForeCast(city,response);
   
-             
-//////////////////////////////////////////
+
 //display moment.js 
   var todayDate = moment().format("dddd, MMMM Do YYYY");
   
+//append to current weather container
   $("#today").html("<h1>" + response.city.name + "<h1>"+  response.city.country + "</h1>");
   $("#today").append("<h2>"  + todayDate +"<h2>");
-  
-  
   $("#today").append("<h3>Temperature  :  " + response.list[0].main.temp + "C<h3>");
-  console.log(response.list[0].main.temp);
   $("#today").append("<h3>Wind Speed  :  " + response.list[0].wind.speed + "km/h<h3>");
   $("#today").append("<h3>Humidity  :  " + response.list[0].main.humidity + "%" + "<h3>");
+
+  var iconcode = a.weather[0].icon;
+  var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
  
-  var imageUrl = ["http://openweathermap.org/img/wn/10d@2x.png"]
   var weatherIcon= $("<img>");  
-  weatherIcon.attr("src", imageUrl);
+  console.log(response.list[0].weather[0].icon);
+  weatherIcon.attr("src", iconurl);
   weatherIcon.attr("alt", "Icon");
   $("#today").prepend(weatherIcon);
   $("#today").show(weatherIcon);
@@ -58,12 +62,12 @@ $("button").on("click", function(event) {
    
   $("#forecast").show();
   $("#forecast").html("<h2>" + "5 Day Forecast  :  " + "<h2>");
-  $("#forecast").append("<h3>" + response.list[4].main.temp + "<h3>");
  });
-///////////////////////////////////////////////////////////////////
+ 
+ // function to  the forecast
+  function foreCastCard (forecast) {
 
-function foreCastCard (forecast) {
-
+  ///create our div and elements to display
   var col= $("<div>");
   var card= $("<div>");
   var cardBody= $("<div>");
@@ -72,10 +76,10 @@ function foreCastCard (forecast) {
   var wind = $("<p>");
   var humidity = $("<p>");
 
+  ////append forecast elements to display
   col.append(card);
   card.append(cardBody);
   cardBody.append(cardTitle,temp,wind,humidity);
-
   col.attr("class", "col-md");
   col.addClass("5-day-forecast")
   card.attr("class", "card bg-primary h-100 text-white");
@@ -85,36 +89,37 @@ function foreCastCard (forecast) {
   wind.attr("class", "card-text");
   humidity.attr("class", "card-text");
 
+  //// forecast
   cardTitle.text(moment(forecast.dt_txt).format("D/M/YYYY"));
-
   temp.text("Temperature: " + forecast.main.temp + "C");
   wind.text("Wind Speed: " + forecast.wind.speed + "km/h");
   humidity.text("Humidity: " + forecast.main.humidity + "%");
-  
- }  
- 
-  // var cities = []
+  $("#forecast").append(col);
+  }  
 
-  // // // Function for displaying movie data
-  // function renderButtons() {
   
-  //   // Deleting the buttons prior to adding new movies
-  //   // (this is necessary otherwise you will have repeat buttons)
-  //   $("#buttons-view").empty();
+//// function to render the forecast card elements
+ function renderForecastCard (fiveDayForecast) {
+    var headingDiv= $("<div>");
+    var heading = $("<h3>");
+    headingDiv.attr("class","col-12");
+    heading.text("5-Day Forecast");
+    headingDiv.append(heading);
+    foreCastContainer.html("");
+    foreCastContainer.append(headingDiv);
+    function noonTime (forecast){
+      return forecast.dt_txt.includes("12");
+    }
+    var futureCast = fiveDayForecast.filter(noonTime);
+    console.log(futureCast);
+    for (var i = 0; i < futureCast.length; i++) {
+      foreCastCard(futureCast[i]);
+
+    }
+}
+ 
+function renderForeCast (city,data){
+  renderForecastCard(data.list);
   
-  //   // Looping through the array of movies
-  //   for (var i = 0; i < cities.length; i++) {
-  
-  //     // Then dynamicaly generating buttons for each movie in the array
-  //     // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-  //     var a = $("<button>");
-  //     // Adding a class of movie to our button
-  //     a.addClass("form");
-  //     // Adding a data-attribute
-  //     a.attr("form-label", cities[i]);
-  //     // Providing the initial button text
-  //     a.text(cities[i]);
-  //     // Adding the button to the buttons-view div
-  //     $("#search-form").append(a);
-  //   }
-  // }
+}
+ 
