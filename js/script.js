@@ -51,7 +51,6 @@ $("button").on("click", function(event) {
 
   var iconcode = a.weather[0].icon;
   var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
- 
   var weatherIcon= $("<img>");  
   console.log(response.list[0].weather[0].icon);
   weatherIcon.attr("src", iconurl);
@@ -59,7 +58,7 @@ $("button").on("click", function(event) {
   $("#today").prepend(weatherIcon);
   $("#today").show(weatherIcon);
   });
-   
+  
   $("#forecast").show();
   $("#forecast").html("<h2>" + "5 Day Forecast  :  " + "<h2>");
  });
